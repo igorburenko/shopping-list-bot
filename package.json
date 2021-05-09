@@ -1,0 +1,27 @@
+{
+  "name": "shopping-list-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot that can halp you not forget your shopping list",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/bot.js"
+  },
+  "keywords": [
+    "bot",
+    "shopping",
+    "telegramm",
+    "list"
+  ],
+  "author": "Ihor Burenko",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.12.7",
+    "telegraf": "^4.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "type": "module"
+}
