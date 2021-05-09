@@ -6,8 +6,9 @@ import TextConstants from './TextConstants.js';
 import mongoose from 'mongoose'
 import Family from './../models/Family.js'
 import User from './../models/User.js'
+import http from 'http'
 
-require('http').createServer().listen(process.env.PORT || 5000).on('request', function(req, res){
+http.createServer().listen(process.env.PORT || 5000).on('request', function(req, res){
   res.end('')
 });
 env.config({path: '.env'})
