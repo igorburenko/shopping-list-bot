@@ -11,6 +11,20 @@ import http from 'http'
 http.createServer().listen(process.env.PORT || 5000).on('request', function(req, res){
   res.end('')
 });
+
+// import express from 'express'
+// const app = express()
+// const port = process.env.PORT || 3000
+//
+// app.get('/', (req, res) => {
+//   res.send('Hello World!')
+// })
+//
+// app.listen(port, () => {
+//   console.log(`Example app listening at http://localhost:${port}`)
+// })
+//
+
 env.config({path: '.env'})
 
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
