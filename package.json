@@ -1,7 +1,7 @@
 {
   "name": "shopping-list-bot",
   "version": "1.0.0",
-  "description": "Telegram bot that can halp you not forget your shopping list",
+  "description": "Telegram bot that can help you not forget your shopping list",
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,5 +24,8 @@
   "devDependencies": {
     "nodemon": "^2.0.7"
   },
-  "type": "module"
+  "type": "module",
+  "engines": {
+    "node": "16.x"
+  }
 }
