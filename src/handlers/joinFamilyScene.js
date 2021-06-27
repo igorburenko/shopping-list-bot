@@ -47,7 +47,7 @@ async function onInviteCodeSend(ctx) {
     const view = new View(ctx, botMessageId)
     await view.removeUserMessage()
 
-    const family = await Family.findByIdAndUpdate(familyId, { users: user._id })
+    const family = await Family.findByIdAndUpdate(familyId, {$push: { users: user._id }})
     await User.findOneAndUpdate({ chatId }, { $push: {family: family._id}})
     // await view.editUserMessage(TextConstants.FAMILY_CREATED + user.family._id)
 
