@@ -8,7 +8,6 @@ import { Scenes } from 'telegraf'
 const joinFamilyScene = new Scenes.BaseScene('joinFamily')
 
 joinFamilyScene.enter(async ctx => {
-  console.log('join family enter')
   const chatId = ctx.message.from.id
   const user = await User.findOne({ chatId }).populate('family', '_id')
   const botMessageId = user.botMessageId
@@ -24,6 +23,8 @@ joinFamilyScene.enter(async ctx => {
     await ctx.scene.leave()
     return view.editUserMessage(TextConstants.FAMILY_RESTORED + user.family._id)
   }
+
+  await view.editUserMessage('Введите ваш инвайт код')
 })
 
 joinFamilyScene.leave(async ctx => {
@@ -44,17 +45,20 @@ async function onInviteCodeSend(ctx) {
     const botMessageId = user.botMessageId
 
     const view = new View(ctx, botMessageId)
-    // await view.removeUserMessage()
+    await view.removeUserMessage()
 
     const family = await Family.findByIdAndUpdate(familyId, { users: user._id })
     await User.findOneAndUpdate({ chatId }, { $push: {family: family._id}})
-    await view.editUserMessage(TextConstants.FAMILY_CREATED + user.family._id)
+    // await view.editUserMessage(TextConstants.FAMILY_CREATED + user.family._id)
 
-    await ctx.scene.leave()
+
   }
   catch (e) {
     ctx.reply('Something went wrong' +  e)
     console.log(e)
+  }
+  finally {
+    await ctx.scene.leave()
   }
 }
 
