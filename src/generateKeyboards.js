@@ -9,7 +9,7 @@ export const generateProductButtons = (string) => {
     const lastRowIndex = acc.length - 1
     const lastRow = acc[lastRowIndex]
 
-    const lastRowCharactersLength = lastRow.join(' ').length
+    const lastRowCharactersLength = lastRow.reduce((acc, product) => acc + product.text, '').length
     const expectedRowCharactersLength = lastRowCharactersLength + product.length
 
     if (expectedRowCharactersLength > MAX_CHARS_IN_ROW) {
