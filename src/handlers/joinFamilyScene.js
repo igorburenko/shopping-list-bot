@@ -50,8 +50,6 @@ async function onInviteCodeSend(ctx) {
     const family = await Family.findByIdAndUpdate(familyId, {$push: { users: user._id }})
     await User.findOneAndUpdate({ chatId }, { $push: {family: family._id}})
     // await view.editUserMessage(TextConstants.FAMILY_CREATED + user.family._id)
-
-
   }
   catch (e) {
     ctx.reply('Something went wrong' +  e)
